@@ -183,6 +183,7 @@ websocket_handshake(State=#state{transport=Transport, challenge=Challenge},
 	{ok, Req2} = cowboy_req:upgrade_reply(
 		101,
 		[{<<"Upgrade">>, <<"websocket">>},
+		 {<<"Connection">>, <<"Upgrade">>},
 		 {<<"Sec-Websocket-Accept">>, Challenge}],
 		Req),
 	%% Flush the resp_sent message before moving on.
